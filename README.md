@@ -2,6 +2,10 @@
 
 ![K8s LogJedi](images/k8s_jedi.png)
 
+[![code size](https://img.shields.io/github/languages/code-size/adefemi171/k8s.LogJedi?label=code%20size)](https://github.com/adefemi171/k8s.LogJedi)
+[![License](https://img.shields.io/github/license/adefemi171/k8s.LogJedi)](https://github.com/adefemi171/k8s.LogJedi/blob/main/LICENSE)
+[![last commit](https://img.shields.io/github/last-commit/adefemi171/k8s.LogJedi)](https://github.com/adefemi171/k8s.LogJedi/commits/main)
+
 A simple landing website for [k8s LogJedi](https://github.com/adefemi171/k8s.LogJedi), built with **Vue 3** and **Vite**.
 
 ## Setup
