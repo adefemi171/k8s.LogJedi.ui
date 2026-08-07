@@ -2,11 +2,10 @@
 
 ![K8s LogJedi](images/k8s_jedi.png)
 
-[![code size](https://img.shields.io/github/languages/code-size/adefemi171/k8s.LogJedi?label=code%20size)](https://github.com/adefemi171/k8s.LogJedi)
-[![License](https://img.shields.io/github/license/adefemi171/k8s.LogJedi)](https://github.com/adefemi171/k8s.LogJedi/blob/main/LICENSE)
-[![last commit](https://img.shields.io/github/last-commit/adefemi171/k8s.LogJedi)](https://github.com/adefemi171/k8s.LogJedi/commits/main)
+Landing site and live analysis console for **k8s LogJedi**, built with **Vue 3**, **Vue Router**, and **Vite**.
 
-A simple landing website for [k8s LogJedi](https://github.com/adefemi171/k8s.LogJedi), built with **Vue 3** and **Vite**.
+- **UI repo:** https://github.com/adefemi171/k8s.LogJedi.ui
+- **Main app repo:** https://github.com/adefemi171/k8s.LogJedi
 
 ## Setup
 
@@ -20,7 +19,16 @@ npm install
 npm run dev
 ```
 
-Opens at `http://localhost:5173`.
+- Home: `http://localhost:5173/`
+- Console: `http://localhost:5173/console`
+
+The Vite dev server proxies `/api/*` → `http://127.0.0.1:8000` (override with `VITE_LLM_PROXY_TARGET`). Port-forward the LLM service first:
+
+```bash
+kubectl -n logjedi port-forward svc/llm-service 8000:8000
+```
+
+Optional: set `VITE_LLM_API_URL` to call a remote LLM base URL directly (requires `CORS_ALLOW_ORIGINS` on the service).
 
 ## Build
 
@@ -28,12 +36,9 @@ Opens at `http://localhost:5173`.
 npm run build
 ```
 
-Output is in `dist/`. Serve with any static host or `npm run preview`.
+Output is in `dist/`.
 
 ## What’s inside
 
-- Single-page site: hero, what it does, architecture, quick start snippet, GitHub link.
-- Dark theme with green accent; DM Sans font.
-- No backend; static HTML/CSS/JS after build.
-
-The main application (Go operator + Python LLM service) lives in the **LogSage** repo; this repo is only the website.
+- Cinematic landing page (brand hero, flow, install)
+- `/console` — live view of `/analyses` and `/reports` with optional auth header + auto-refresh

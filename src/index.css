@@ -1,42 +1,123 @@
 :root {
-  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
-  line-height: 1.6;
-  font-weight: 400;
-  color: #e2e8f0;
-  background-color: #0f172a;
+  --bg: #071018;
+  --bg-elevated: #0c1824;
+  --ink: #e7f0f6;
+  --ink-soft: #9db3c4;
+  --muted: #6d8496;
+  --accent: #d4a017;
+  --accent-hot: #f0c14b;
+  --signal: #3ecf8e;
+  --danger: #e35d6a;
+  --line: rgba(231, 240, 246, 0.1);
+  --glow: rgba(212, 160, 23, 0.35);
+  --font-display: 'Syne', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --radius: 2px;
+  --max: 1120px;
+
+  font-family: var(--font-display);
+  line-height: 1.55;
+  font-weight: 500;
+  color: var(--ink);
+  background-color: var(--bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --accent: #22c55e;
-  --accent-dim: #16a34a;
-  --muted: #64748b;
-  --card: #1e293b;
-  --card-border: #334155;
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(212, 160, 23, 0.12), transparent 55%),
+    radial-gradient(900px 500px at 10% 20%, rgba(62, 207, 142, 0.08), transparent 50%),
+    linear-gradient(180deg, #050a10 0%, var(--bg) 40%, #08131c 100%);
+  background-attachment: fixed;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image:
+    linear-gradient(rgba(231, 240, 246, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(231, 240, 246, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+  z-index: 0;
 }
 
 a {
-  font-weight: 500;
-  color: var(--accent);
+  color: var(--accent-hot);
   text-decoration: none;
+  font-weight: 600;
 }
 
 a:hover {
-  color: #4ade80;
-  text-decoration: underline;
+  color: #ffe08a;
+}
+
+button,
+input {
+  font: inherit;
 }
 
 #app {
+  position: relative;
+  z-index: 1;
   width: 100%;
   min-height: 100vh;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-line {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-12px);
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
